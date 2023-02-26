@@ -56,6 +56,11 @@
                                     <field name="garden_orientation"/>
                                 </group>
                             </page>
+                            <page string="Offers">
+                                <group>
+                                    <field name="offer_ids" ref="estate_model_offer_view_tree"/>
+                                </group>
+                            </page>
                             <page string="Other info">
                                 <group>
                                     <field name="sales_person_id" />
