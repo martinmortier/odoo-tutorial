@@ -5,9 +5,13 @@
         <field name="arch" type="xml">
             <form string="Test">
                 <sheet>
-                    <field name="price" />
-                    <field name="partner_id" />
-                    <field name="status" />
+                    <group>
+                        <field name="price" />
+                        <field name="partner_id" />
+                        <field name="status" />
+                        <field name="validity" />
+                        <field name="date_deadline" />
+                    </group>
                 </sheet>
             </form>
         </field>
@@ -21,6 +25,8 @@
                 <field name="price" />
                 <field name="partner_id" />
                 <field name="status" />
+                <field name="validity" />
+                <field name="date_deadline" />
 
             </tree>
         </field>
