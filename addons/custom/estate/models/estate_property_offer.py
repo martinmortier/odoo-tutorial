@@ -24,4 +24,4 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             date_deadline_datetime = datetime.combine(record.date_deadline, time.min)
             record.validity = (date_deadline_datetime - record.create_date).days
-            record.validity+=1
+            record.validity += 1
