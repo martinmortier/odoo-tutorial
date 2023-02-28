@@ -1,5 +1,4 @@
-from odoo import models, fields, api
-
+from odoo import models, fields, api, exceptions
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -33,8 +32,6 @@ class EstateProperty(models.Model):
     total_area = fields.Integer(compute='_compute_total_era')
     best_price = fields.Float(compute='_compute_best_price')
 
-    print('test martin 3')
-
     @api.depends('living_area', 'garden_area')
     def _compute_total_era(self):
         for record in self:
@@ -50,3 +47,17 @@ class EstateProperty(models.Model):
         if self.garden:
             self.garden_area = 10
             self.garden_orientation = 'north'
+
+    def action_sold(self):
+        for record in self:
+            if record.state == 'canceled':
+                raise exceptions.UserError('Canceled property cannot be sold')
+            record.state = 'sold'
+        return True
+
+    def action_cancel(self):
+        for record in self:
+            if record.state == 'sold':
+                raise exceptions.UserError('Sold property cannot be canceled')
+            record.state = 'canceled'
+        return True
