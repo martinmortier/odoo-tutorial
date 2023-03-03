@@ -4,6 +4,10 @@ from datetime import date, timedelta, time, datetime
 
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
+    _order = 'price desc'
+    _sql_constraints = [
+        ('check_price', 'CHECK(price >= 0)', 'Offer price must be strictly positive')
+    ]
 
     price = fields.Float()
     status = fields.Selection(copy=False, selection=[('accepted', 'Accepted'), ('refused', 'Refused')])
@@ -12,9 +16,6 @@ class EstatePropertyOffer(models.Model):
     validity = fields.Integer(default=7, string='Validity (days)')
     date_deadline = fields.Date(compute='_compute_dead_line', inverse='_inverse_dead_line', string='deadline')
 
-    _sql_constraints = [
-        ('check_price', 'CHECK(price >= 0)', 'Offer price must be strictly positive')
-    ]
 
     @api.depends('create_date', 'validity')
     def _compute_dead_line(self):
