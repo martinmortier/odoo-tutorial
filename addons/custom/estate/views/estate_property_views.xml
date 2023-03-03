@@ -29,6 +29,7 @@
                 <header>
                     <button name="action_sold" class='oe_highlight' type="object" string="SOLD"/>
                     <button name="action_cancel" type="object" string="CANCELED"/>
+                    <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
                     <div>
@@ -38,7 +39,6 @@
                         <field name="tag_ids" widget="many2many_tags"/>
                         <group>
                             <group>
-                                <field name="state" />
                                 <field name="property_type_id" />
                                 <field name="postcode"/>
                                 <field name="date_availability"/>
@@ -65,7 +65,7 @@
                             </page>
                             <page string="Offers">
                                 <group>
-                                    <field name="offer_ids" ref="estate_model_offer_view_tree"/>
+                                    <field name="offer_ids" ref="estate_model_offer_view_tree" />
                                 </group>
                             </page>
                             <page string="Other info">
