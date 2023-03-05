@@ -1,6 +1,5 @@
 from odoo import models, fields, api, exceptions
 from odoo.tools.float_utils import float_compare, float_is_zero
-from odoo.exceptions import ValidationError
 
 
 class EstateProperty(models.Model):
@@ -78,3 +77,13 @@ class EstateProperty(models.Model):
                 raise exceptions.UserError('Sold property cannot be canceled')
             record.state = 'canceled'
         return True
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_if_state_different_new_or_canceled(self):
+        for record in self:
+            if record.state == 'new' or record.state == 'canceled':
+                raise exceptions.ValidationError('You cannot delete a property with a state:')
+
+    def set_state_offer_received(self):
+        for record in self:
+            record.state = 'offer_received'

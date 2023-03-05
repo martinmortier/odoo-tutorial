@@ -70,9 +70,7 @@
                                 </group>
                             </page>
                             <page string="Offers">
-                                <group>
-                                    <field name="offer_ids" ref="estate_model_offer_view_tree" />
-                                </group>
+                                <field name="offer_ids" ref="estate_model_offer_view_tree" />
                             </page>
                             <page string="Other info">
                                 <group>

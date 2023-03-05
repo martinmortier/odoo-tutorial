@@ -17,7 +17,6 @@ class EstatePropertyOffer(models.Model):
     date_deadline = fields.Date(compute='_compute_dead_line', inverse='_inverse_dead_line', string='deadline')
     property_type_id = fields.Many2one(related='property_id.property_type_id', store=True)
 
-
     @api.depends('create_date', 'validity')
     def _compute_dead_line(self):
         for record in self:
@@ -43,3 +42,8 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             record.status = 'refused'
         return True
+
+    @api.model
+    def create(self, vals_list):
+        self.env['estate.property'].browse(vals_list['property_id']).set_state_offer_received()
+        return super().create(vals_list)
