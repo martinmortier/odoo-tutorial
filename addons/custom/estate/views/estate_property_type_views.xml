@@ -1,39 +1,43 @@
 <odoo>
     <record id="estate_property_type_action" model="ir.actions.act_window">
         <field name="res_model">estate.property.type</field>
-        <field name="views">form</field>
+        <field name="views">form, tree</field>
     </record>
 
 
     <record id="estate_property_type_view_tree" model="ir.ui.view">
-    <field name="name">estate.property.type.tree</field>
-    <field name="model">estate.property.type</field>
-    <field name="arch" type="xml">
-        <tree>
-            <field name="sequence" widget="handle" />
-            <field name="name" />
-        </tree>
-    </field>
+        <field name="name">estate.property.type.tree</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+            </tree>
+        </field>
     </record>
 
     <record id="estate_property_type_view_form" model="ir.ui.view">
-      <field name="name">estate.property.type.form</field>
-      <field name="model">estate.property.type</field>
-      <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <h1>
-                    <field name="name"/>
-                </h1>
-                <field name="property_ids">
-                    <tree string="Properties">
-                        <field name="name" />
-                        <field name="expected_price" />
-                        <field name="state" />
-                    </tree>
-                </field>
-            </sheet>
-        </form>
-      </field>
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <button name="%(estate.estate_property_offer_action)d" type="action">
+                        <i class="fa fa-money"  title="money"/>
+                        <field name="offer_count" /> offers
+                    </button>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <field name="property_ids">
+                        <tree string="Properties">
+                            <field name="name" />
+                            <field name="expected_price" />
+                            <field name="state" />
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
     </record>
 </odoo>
