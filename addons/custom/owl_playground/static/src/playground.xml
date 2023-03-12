@@ -5,6 +5,8 @@
             hello world
         </div>
         <Counter />
-        <Todo />
+        <div t-foreach="todos" t-as="todo" t-key="todo.id">
+            <Todo id="todo.id" description="todo.description" done="todo.done"/>
+        </div>
     </t>
 </templates>
