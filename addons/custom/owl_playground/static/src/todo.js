@@ -6,7 +6,8 @@ export class Todo extends Component {
         id: Number,
         description: String,
         done: Boolean,
-        toggleState: Function
+        toggleState: Function,
+        removeTodo: Function
     }
 
     static template = xml`
@@ -14,6 +15,7 @@ export class Todo extends Component {
         <div t-att-class="{'text-muted text-decoration-line-through': props.done }">
             <span t-esc="props.id"/> . <span t-esc="props.description" />
             <input type="checkbox" t-model="props.done" t-on-click="(event) => props.toggleState(event,props.id)"/>
+            <button t-on-click="(event) => props.removeTodo(event, props.id)">Remove</button>
         </div>
     </div>
     `

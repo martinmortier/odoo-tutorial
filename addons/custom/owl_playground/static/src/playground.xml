@@ -9,7 +9,12 @@
             <input placeholder="Enter a new task" t-on-keyup="addTodo" t-ref="inputRef"/>
         </div>
         <div t-foreach="todos" t-as="todo" t-key="todo.id">
-            <Todo id="todo.id" description="todo.description" done="todo.done" toggleState.bind="toggleState"/>
+            <Todo id="todo.id" description="todo.description" done="todo.done" toggleState.bind="toggleState" removeTodo.bind="removeTodo"/>
         </div>
+        <Card>
+            <t t-set-slot="title">Card title</t>
+            <p class="card-text">Some quick example text...</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </Card>
     </t>
 </templates>
