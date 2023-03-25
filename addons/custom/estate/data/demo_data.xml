@@ -1,0 +1,13 @@
+<odoo>
+    <record id="estate_property_demo_data_1" model="estate.property">
+        <field name="name">Big Villa</field>
+        <field name="expected_price">20</field>
+    </record>
+
+    <record id="estate_property_offer_demo_data_1" model="estate.property.offer">
+        <field name="price">10000</field>
+        <field name="validity">14</field>
+        <field name="property_id" ref="estate_property_demo_data_1"/>
+        <field name="partner_id" ref="base.res_partner_12"/>
+    </record>
+</odoo>

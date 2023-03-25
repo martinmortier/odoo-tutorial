@@ -4,6 +4,9 @@
 <t t-name="awesome_tshirt.clientaction" owl="1">
     <Layout display="display">
          <t t-set-slot="control-panel-bottom-left">
+             <button t-on-click="openCustomers">Customers</button>
+             <button t-on-click="newOrders">New Orders</button>
+             <button t-on-click="cancelOrders">Cancelled Order</button>
             Hello owl
         </t>
     </Layout>
